@@ -1,0 +1,3 @@
+@interface PRHWatchCompassWindowController : NSWindowController
+
+@end
