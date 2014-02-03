@@ -8,6 +8,17 @@
 
 @end
 
+static void countSinglePathElement(void *info, const CGPathElement *element) {
+	NSUInteger *countPtr = info;
+	if (element->type != kCGPathElementCloseSubpath)
+		++*countPtr;
+}
+static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
+	NSUInteger count = 0;
+	CGPathApply(path, &count, countSinglePathElement);
+	return count;
+}
+
 @implementation PRHCompassView
 {
 	CALayer *_rootLayer;
@@ -63,7 +74,14 @@
 		sunPathRect.size.height *= 2.0;
 		CGPathRef sunPath = CGPathCreateWithEllipseInRect(sunPathRect, /*transform*/ NULL);
 		sunPositionAnimation.path = sunPath;
+		NSUInteger numStops = PRHCountElementsOfPath(sunPath);
 		CGPathRelease(sunPath);
+		NSMutableArray *stopTimes = [NSMutableArray arrayWithCapacity:numStops];
+		--numStops;
+		for (NSUInteger i = 0; i <= numStops; ++i) {
+			[stopTimes addObject:@(i / (float)numStops)];
+		}
+		sunPositionAnimation.keyTimes = stopTimes;
 		sunPositionAnimation.rotationMode = kCAAnimationRotateAuto;
 		sunPositionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
 		//sunPositionAnimation.duration = 24.0 * 3600.0;
