@@ -33,7 +33,7 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		_rootLayer = [CALayer new];
 		_rootLayer.bounds = (NSRect){ NSZeroPoint, frame.size };
 		_rootLayer.delegate = self;
-		//_rootLayer.speed = 1800.0;
+		_rootLayer.speed = 7200.0;
 		self.layer = _rootLayer;
 		self.wantsLayer = YES;
 
@@ -84,9 +84,7 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		sunPositionAnimation.keyTimes = stopTimes;
 		sunPositionAnimation.rotationMode = kCAAnimationRotateAuto;
 		sunPositionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-		//sunPositionAnimation.duration = 24.0 * 3600.0;
-		static const NSTimeInterval dayLength = 5.0;
-		sunPositionAnimation.duration = dayLength; //TEMP
+		sunPositionAnimation.duration = 24.0 * 3600.0;
 		sunPositionAnimation.repeatCount = HUGE_VALF;
 		[_sunLayer addAnimation:sunPositionAnimation forKey:key];
 
@@ -107,8 +105,7 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		handRotationAnimation.toValue = @0.0;
 		handRotationAnimation.cumulative = YES;
 		handRotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-		//handRotationAnimation.duration = 12.0 * 3600.0;
-		handRotationAnimation.duration = dayLength / 2.0; //TEMP
+		handRotationAnimation.duration = 12.0 * 3600.0;
 		handRotationAnimation.repeatCount = HUGE_VALF;
 		[_hourHandLayer addAnimation:handRotationAnimation forKey:key];
 
