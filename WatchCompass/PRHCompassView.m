@@ -68,14 +68,13 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 
 		NSString *key = @"position";
 		CAKeyframeAnimation *sunPositionAnimation = [CAKeyframeAnimation animationWithKeyPath:key];
-		NSRect sunPathRect = frame;
-		sunPathRect = NSInsetRect(sunPathRect, sunSize.width / 2.0, sunSize.height / 2.0);
-		sunPathRect.origin.y -= sunPathRect.size.height;
+		NSRect sunPathRect = _rootLayer.bounds;
+		sunPathRect = NSInsetRect(sunPathRect, sunSize.width / 2.0, sunSize.height / 4.0);
 		sunPathRect.size.height *= 2.0;
+		sunPathRect.origin.y = -(sunPathRect.size.height / 2.0);
 		CGPathRef sunPath = CGPathCreateWithEllipseInRect(sunPathRect, /*transform*/ NULL);
 		sunPositionAnimation.path = sunPath;
 		NSUInteger numStops = PRHCountElementsOfPath(sunPath);
-		CGPathRelease(sunPath);
 		NSMutableArray *stopTimes = [NSMutableArray arrayWithCapacity:numStops];
 		--numStops;
 		for (NSUInteger i = 0; i <= numStops; ++i) {
@@ -93,7 +92,8 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		NSRect compassBounds = _rootLayer.bounds;
 		NSPoint trackCenter = { NSMidX(compassBounds), NSMidY(compassBounds) };
 		sunPathLayer.position = trackCenter;
-		sunPathLayer.path = translatedSunPath;
+		sunPathLayer.path = sunPath;
+		CGPathRelease(sunPath);
 		sunPathLayer.strokeColor = CGColorGetConstantColor(kCGColorBlack); sunPathLayer.lineWidth = 1.0;
 		sunPathLayer.fillColor = NULL;
 		[_rootLayer addSublayer:sunPathLayer];
