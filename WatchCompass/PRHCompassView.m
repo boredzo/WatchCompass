@@ -90,7 +90,7 @@
 		handRotationAnimation.cumulative = YES;
 		handRotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
 		//handRotationAnimation.duration = 12.0 * 3600.0;
-		handRotationAnimation.duration = dayLength; //TEMP
+		handRotationAnimation.duration = dayLength / 2.0; //TEMP
 		handRotationAnimation.repeatCount = HUGE_VALF;
 		[_hourHandLayer addAnimation:handRotationAnimation forKey:key];
 
