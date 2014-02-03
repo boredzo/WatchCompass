@@ -38,7 +38,6 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		self.wantsLayer = YES;
 
 		_watchFaceLayer = [CALayer new];
-		_watchFaceLayer.borderColor = CGColorGetConstantColor(kCGColorBlack); _watchFaceLayer.borderWidth = 1.0;
 		NSImage *watchFaceImage = [NSImage imageNamed:@"WatchFace"];
 		_watchFaceLayer.contents = watchFaceImage;
 		_watchFaceLayer.bounds = (NSRect){ NSZeroPoint, watchFaceImage.size };
@@ -59,7 +58,6 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		[_watchFaceLayer addSublayer:_hourHandLayer];
 
 		_sunLayer = [CALayer new];
-		_sunLayer.borderColor = CGColorGetConstantColor(kCGColorBlack); _sunLayer.borderWidth = 1.0;
 		NSImage *sunImage = [NSImage imageNamed:@"Sun"];
 		_sunLayer.contents = sunImage;
 		NSSize sunSize = sunImage.size;
@@ -86,17 +84,6 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		sunPositionAnimation.duration = 24.0 * 3600.0;
 		sunPositionAnimation.repeatCount = HUGE_VALF;
 		[_sunLayer addAnimation:sunPositionAnimation forKey:key];
-
-		CAShapeLayer *sunPathLayer = [CAShapeLayer new];
-		sunPathLayer.bounds = _rootLayer.bounds;
-		NSRect compassBounds = _rootLayer.bounds;
-		NSPoint trackCenter = { NSMidX(compassBounds), NSMidY(compassBounds) };
-		sunPathLayer.position = trackCenter;
-		sunPathLayer.path = sunPath;
-		CGPathRelease(sunPath);
-		sunPathLayer.strokeColor = CGColorGetConstantColor(kCGColorBlack); sunPathLayer.lineWidth = 1.0;
-		sunPathLayer.fillColor = NULL;
-		[_rootLayer addSublayer:sunPathLayer];
 
 		key = @"transform";
 		NSString *keyPath = @"transform.rotation.z";
