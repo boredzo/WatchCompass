@@ -66,7 +66,9 @@
 		CGPathRelease(sunPath);
 		sunPositionAnimation.rotationMode = kCAAnimationRotateAuto;
 		sunPositionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+		sunPositionAnimation.keyTimes = @[ @0, @0.25, @0.5, @0.75, @1 ];
 		//sunPositionAnimation.duration = 24.0 * 3600.0;
+		
 		static const NSTimeInterval dayLength = 5.0;
 		sunPositionAnimation.duration = dayLength; //TEMP
 		sunPositionAnimation.repeatCount = HUGE_VALF;
