@@ -41,7 +41,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{196, 240}, {400, 260}}</string>
 				<int key="NSWTFlags">544735232</int>
-				<string key="NSWindowTitle">Compass watch</string>
+				<string key="NSWindowTitle">Watch Compass</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<nil key="NSUserInterfaceItemIdentifier"/>
@@ -58,7 +58,6 @@
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{105, 0}, {150, 75}}</string>
 									<reference key="NSSuperview" ref="221230222"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="62650307"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<string key="NSClassName">NSView</string>
@@ -68,7 +67,6 @@
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{275, -42}, {85, 85}}</string>
 									<reference key="NSSuperview" ref="221230222"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="993253659"/>
 									<string key="NSReuseIdentifierKey">_NS:9</string>
 									<string key="NSClassName">NSView</string>
@@ -76,7 +74,6 @@
 							</array>
 							<string key="NSFrame">{{20, 60}, {360, 180}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1036678243"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<string key="NSClassName">PRHCompassView</string>
@@ -86,7 +83,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{105, 12}, {191, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -112,7 +108,6 @@
 					</array>
 					<string key="NSFrameSize">{400, 260}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="221230222"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 698}}</string>
@@ -613,56 +608,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">87</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NSLayoutConstraint</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PRHCompassView</string>
-					<string key="superclassName">NSView</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">toggleRotationOfEarth:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">toggleRotationOfEarth:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">toggleRotationOfEarth:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PRHCompassView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">PRHWatchCompassWindowController</string>
-					<string key="superclassName">NSWindowController</string>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">compassView</string>
-						<string key="NS.object.0">PRHCompassView</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">compassView</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">compassView</string>
-							<string key="candidateClassName">PRHCompassView</string>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/PRHWatchCompassWindowController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
