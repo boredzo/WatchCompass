@@ -89,11 +89,11 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 		[_sunLayer addAnimation:sunPositionAnimation forKey:key];
 
 		CAShapeLayer *sunPathLayer = [CAShapeLayer new];
-		sunPathLayer.bounds = sunPathRect;
+		sunPathLayer.bounds = _rootLayer.bounds;
 		NSRect compassBounds = _rootLayer.bounds;
-		NSPoint bottomMiddle = { NSMidX(compassBounds), NSMinY(compassBounds) + 1.0 };
-		sunPathLayer.position = bottomMiddle;
-		sunPathLayer.path = sunPath;
+		NSPoint trackCenter = { NSMidX(compassBounds), NSMidY(compassBounds) };
+		sunPathLayer.position = trackCenter;
+		sunPathLayer.path = translatedSunPath;
 		sunPathLayer.strokeColor = CGColorGetConstantColor(kCGColorBlack); sunPathLayer.lineWidth = 1.0;
 		sunPathLayer.fillColor = NULL;
 		[_rootLayer addSublayer:sunPathLayer];
