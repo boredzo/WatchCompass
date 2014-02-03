@@ -122,18 +122,21 @@ static NSUInteger PRHCountElementsOfPath(CGPathRef path) {
 	_watchFaceLayer.contentsScale = scaleFactor;
 }
 
-//Lifted from https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW15 .
+//Fixed version of https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/CoreAnimation_guide/AdvancedAnimationTricks/AdvancedAnimationTricks.html#//apple_ref/doc/uid/TP40004514-CH8-SW15 .
 - (void) pauseLayer:(CALayer *)layer {
-	CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+	CFTimeInterval pausedTimeSys = CACurrentMediaTime();
+	CFTimeInterval pausedTime = [layer convertTime:pausedTimeSys fromLayer:nil];
 	layer.speed = 0.0;
 	layer.timeOffset = pausedTime;
 }
 - (void) resumeLayer:(CALayer *)layer {
 	CFTimeInterval pausedTime = [layer timeOffset];
-	layer.speed = 1.0;
 	layer.timeOffset = 0.0;
 	layer.beginTime = 0.0;
-	CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+	layer.speed = 7200.0;
+	CFTimeInterval pausedTimeSys = [layer convertTime:pausedTime toLayer:nil];
+	CFTimeInterval resumeTimeSys = CACurrentMediaTime();
+	CFTimeInterval timeSincePause = resumeTimeSys - pausedTimeSys;
 	layer.beginTime = timeSincePause;
 }
 
