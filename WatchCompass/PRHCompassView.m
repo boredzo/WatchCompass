@@ -23,7 +23,6 @@
 		_rootLayer.bounds = (NSRect){ NSZeroPoint, frame.size };
 		_rootLayer.delegate = self;
 		//_rootLayer.speed = 1800.0;
-		_rootLayer.speed = 0.05;
 		self.layer = _rootLayer;
 		self.wantsLayer = YES;
 
@@ -68,6 +67,8 @@
 		sunPositionAnimation.rotationMode = kCAAnimationRotateAuto;
 		sunPositionAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
 		//sunPositionAnimation.duration = 24.0 * 3600.0;
+		static const NSTimeInterval dayLength = 5.0;
+		sunPositionAnimation.duration = dayLength; //TEMP
 		sunPositionAnimation.repeatCount = HUGE_VALF;
 		[_sunLayer addAnimation:sunPositionAnimation forKey:key];
 
@@ -89,6 +90,7 @@
 		handRotationAnimation.cumulative = YES;
 		handRotationAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
 		//handRotationAnimation.duration = 12.0 * 3600.0;
+		handRotationAnimation.duration = dayLength; //TEMP
 		handRotationAnimation.repeatCount = HUGE_VALF;
 		[_hourHandLayer addAnimation:handRotationAnimation forKey:key];
 
